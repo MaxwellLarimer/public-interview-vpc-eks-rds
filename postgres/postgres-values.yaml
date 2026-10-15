@@ -1,0 +1,28 @@
+auth:
+  enablePostgresUser: true
+  postgresPassword: "CHANGE_ME_ADMIN_PASSWORD"
+  username: "appuser"
+  password: "CHANGE_ME_APP_PASSWORD"
+  database: "appdb"
+
+architecture: standalone
+
+primary:
+  persistence:
+    enabled: true
+    storageClass: gp3
+    size: 20Gi
+
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+
+  service:
+    type: ClusterIP
+
+networkPolicy:
+  enabled: true
